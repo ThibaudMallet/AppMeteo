@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="col-9">
+
+    <h1 class="mb-5">Bienvenue sur la météo des villes !</h1>
+
+    {% for id,weatherCity in weatherCities %}
+    <div class="item item--bg-{{ weatherCity.weather }}">
+        <div class="item--city"><a href="{{ path('main-addCityInWidget', {id:id}) }}">{{ weatherCity.city }}</a></div>
+        <div class="item--forecast">{{ weatherCity.date | date("d/m") }} : {{ weatherCity.min }}°C / {{ weatherCity.max }}°C</div>
+    </div>     
+    {% endfor %}
+
+</div>
+{% endblock %}

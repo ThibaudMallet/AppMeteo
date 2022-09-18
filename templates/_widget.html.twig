@@ -1,0 +1,12 @@
+
+<!-- Si ville sélectionnée -->
+
+{% if app.session.get('city') %}
+<p><b>{{ widget.city }}</b></p>
+<p>{{ widget.date | date("d/m") }}</p>
+<p><img src="images/{{ widget.weather }}.png"></p>
+<p>{{ widget.min }}°C / {{ widget.max }}°C</p>
+<!-- Si ville non sélectionnée -->
+{% else %}
+<div>Sélectionnez une ville<br>dans la liste de gauche</div>
+{% endif %}

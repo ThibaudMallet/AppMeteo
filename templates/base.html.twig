@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Appli Météo{% endblock %}</title>
+
+    <!-- Balises pour le responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Notre CSS custom -->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body class="mb-5">
+    <nav class="container py-3 mb-3">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a {% if app.request.get('_route') == 'main-home' %} class="nav-link active"{% endif %} class="nav-link" href="{{ path('main-home') }}">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a {% if app.request.get('_route') == 'mountain-index' %} class="nav-link active"{% endif %} class="nav-link " href="{{ path('mountain-index') }}">Montagne</a>
+            </li>
+            <li class="nav-item">
+                <a {% if app.request.get('_route') == 'beach-index' %} class="nav-link active"{% endif %} class="nav-link " href="{{ path('beach-index') }}">Plages</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Minimal responsive + columns -->
+    <main class="container">
+        <div class="row">
+
+        {% block content %}{% endblock %}
+
+            <!-- Sidebar (le widget) -->
+            <div class="col-3">
+
+                <!-- Code du widget -->
+                <div id="widget">
+
+                {% block name %}{% endblock %}
+                {% include "_widget.html.twig" %}
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
